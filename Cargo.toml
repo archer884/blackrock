@@ -1,0 +1,17 @@
+[package]
+name = "blackrock"
+version = "0.1.0"
+authors = ["J/A <archer884@gmail.com>"]
+description = """
+Bitreel based video downloader.
+"""
+
+[[bin]]
+bench = false
+path = "src/main.rs"
+name = "brd"
+
+[dependencies]
+hyper = "*"
+hyper-native-tls = "*"
+bitreel = { git = "https://github.com/archer884/bitreel.git" }
