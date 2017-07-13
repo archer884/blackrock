@@ -12,5 +12,5 @@ path = "src/main.rs"
 name = "brd"
 
 [dependencies]
-bitreel = { git = "https://github.com/archer884/bitreel.git" }
+bitreel = { path = "../bitreel" }
 reqwest = "*"

@@ -18,8 +18,18 @@ fn main() {
             Ok(video) => {
                 use std::io;
 
-                let url = video.format(&format).expect("format unavailable");
-                let mut file = File::create(&id).expect("can't save file");
+                let url = match video.format(&format) {
+                    None => {
+                        for format in video.list_formats() {
+                            println!("{}", format);
+                        }
+                        std::process::exit(2);
+                    }
+                    Some(format) => format,
+                };
+
+
+                let mut file = File::create(&(id.to_owned() + ".mp4")).expect("can't save file");
                 let mut res = reqwest::get(url).expect("resource not found");
 
                 io::copy(&mut res, &mut file).expect("unable to write to file");
