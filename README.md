@@ -24,6 +24,14 @@ hd720
 
 If a format is not provided for the download command, it will download the largest available format.
 
+### What is the ID?
+
+Take this URL for instance: `https://youtu.be/LJDVroRnjuM`
+
+The last segment of the above URL is the ID. Alternatively, you're looking for the value associated with `v` in the following URL:
+
+`LJDVroRnjuM`
+
 ## License
 
 Licensed under either of
