@@ -47,6 +47,14 @@ impl Error {
             description: Cow::from("Requested format unavailable")
         }
     }
+
+    pub fn format_unsupported() -> Self {
+        Error {
+            kind: ErrorKind::Format,
+            cause: None,
+            description: Cow::from("Requested format is not supported"),
+        }
+    }
 }
 
 impl fmt::Display for Error {
