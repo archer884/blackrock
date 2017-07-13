@@ -30,7 +30,7 @@ Take this URL for instance: `https://youtu.be/LJDVroRnjuM`
 
 The last segment of the above URL is the ID. Alternatively, you're looking for the value associated with `v` in the following URL:
 
-`LJDVroRnjuM`
+`https://www.youtube.com/watch?v=LJDVroRnjuM&feature=youtu.be`
 
 ## License
 
