@@ -59,7 +59,10 @@ impl Error {
 
 impl fmt::Display for Error {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        write!(f, "{}", self.description)
+        match self.cause {
+            None => write!(f, "{}", self.description),
+            Some(ref e) => write!(f, "{}: {}", self.description, e),
+        }
     }
 }
 
