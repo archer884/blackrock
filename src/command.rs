@@ -9,7 +9,7 @@ pub fn from_args() -> Result<Command> {
         (about: "YouTube video downloader based on bitreel.")
         (@arg video: +required "The ID of the video to be downloaded")
         (@arg path: "The path at which to store downloaded video")
-        (@arg format: -f --format "The format of the video to be downloaded")
+        (@arg format: -r --resolution "The format of the video to be downloaded")
         (@arg list: -l --list-formats "List formats instead of downloading the video")
     ).get_matches();
 
