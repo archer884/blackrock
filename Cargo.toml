@@ -18,6 +18,6 @@ path = "src/main.rs"
 name = "brd"
 
 [dependencies]
-bitreel = { git = "https://github.com/archer884/bitreel.git", branch = "feature/default-connector" }
+bitreel = "0.2"
 clap = "2.25"
 reqwest = "0.7"
