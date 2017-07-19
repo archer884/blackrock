@@ -1,5 +1,5 @@
+use bitreel::video::StreamKey;
 use error::*;
-use format::Format;
 
 /// Attempts to create a command based on program arguments.
 pub fn from_args() -> Result<Command> {
@@ -8,7 +8,8 @@ pub fn from_args() -> Result<Command> {
         (version: crate_version!())
         (about: "YouTube video downloader based on bitreel.")
         (@arg video: +required "The ID of the video to be downloaded")
-        (@arg format: "The format of the video to be downloaded")
+        (@arg path: "The path at which to store downloaded video")
+        (@arg format: -f --format "The format of the video to be downloaded")
         (@arg list: -l --list-formats "List formats instead of downloading the video")
     ).get_matches();
 
@@ -17,12 +18,15 @@ pub fn from_args() -> Result<Command> {
     } else {
         let format = match app_matches.value_of("format") {
             None => None,
-            Some(format) => Some(format.parse::<Format>()?),
+            Some(format) => Some(format.parse::<StreamKey>().map_err(|_| Error::format_unsupported())?),
         };
+
+        let output_path = app_matches.value_of("path").map(|s| s.to_owned());
 
         Ok(Command::Download {
             id: app_matches.value_of("video").unwrap().into(),
             format,
+            output_path,
         })
     }
 }
@@ -32,7 +36,7 @@ pub enum Command {
     ///
     /// Optionally, a download command may include a specific format to be downloaded. If this 
     /// is not included, blackrock will attempt to download the highest definition available.
-    Download { id: String, format: Option<Format> },
+    Download { id: String, format: Option<StreamKey>, output_path: Option<String> },
 
     /// Represents a request to list available formats for a video.
     ListFormats { id: String }

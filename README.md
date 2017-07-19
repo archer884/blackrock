@@ -7,7 +7,7 @@ Based on [bitreel](https://github.com/archer884/bitreel) ("BR"), this downloader
 ## Usage
 
 ```sh
-$ brd <id> [<format>]
+$ brd <url> [<output path>] [--format <format code>]
 $
 ```
 
@@ -24,13 +24,9 @@ hd720
 
 If a format is not provided for the download command, it will download the largest available format.
 
-### What is the ID?
+## Changelog
 
-Take this URL for instance: `https://youtu.be/LJDVroRnjuM`
-
-The last segment of the above URL is the ID. Alternatively, you're looking for the value associated with `v` in the following URL:
-
-`https://www.youtube.com/watch?v=LJDVroRnjuM&feature=youtu.be`
+* **v0.2:** Demoted format argument in favor of an optional output file path. This seems like it would be way more useful in most cases.
 
 ## License
 
